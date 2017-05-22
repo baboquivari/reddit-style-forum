@@ -10,7 +10,7 @@ import './css/App.css';
 
 import App from './components/App';
 import ArticleList from './components/ArticleList';
-import reducer from './reducer/reducer';
+import reducer from './reducer/main.reducer';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 

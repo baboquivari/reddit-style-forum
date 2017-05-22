@@ -1,9 +1,7 @@
-// NEED TO COMPLETE THIS, THEN INTEGRATE INTO HEADER.JS (IE: GO THROUGH ALL THE COMMENTED OUT CODE IN HEADER.JS)
-
 import React from 'react';
 import NavLink from './NavLink';
 
-export const NavBar = (props) => {
+const NavBar = (props) => {
   return (
     <nav className="nav has-shadow">
       <div className="nav-center">
@@ -16,20 +14,21 @@ export const NavBar = (props) => {
   );
 };
 
-NavBar.propTypes = {
-  topics: React.PropTypes.array.isRequired
-};
-
-const generateTopics = topics => {
+const generateTopics = (topics) => {
   return topics.map((topic, i) => {
     return (
-      <NavLink key={i}
+      <NavLink 
+        key={i}
         linkClass="nav-item is-tab uppercase"
-        to={`/topics/${topic.title.toLowerCase()}`}>
+        to={`/topics/${topic.title.toLowerCase()}/articles`}>
         {topic.title}
       </NavLink>
     );
   });
+};
+
+NavBar.propTypes = {
+  topics: React.PropTypes.array.isRequired
 };
 
 export default NavBar;
