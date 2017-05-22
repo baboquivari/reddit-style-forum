@@ -29,6 +29,7 @@ module.exports = {
     ]
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, 'public'),
     publicPath: '/js/',
     port: 9090
