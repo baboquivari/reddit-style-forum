@@ -1,0 +1,9 @@
+.loading {
+	background-color: #FFFFFF;
+  border-radius: 2em;
+	border: .1em solid #e6ecf0;
+}
+
+.loading { text-align: center; }
+
+.loading-img { width: 10em; }

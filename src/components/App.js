@@ -1,28 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Footer from './Footer.js';
-import Header from './Header.js';
-import { fetchTopics } from '../actions/actions'; // !!!!!!!!!!!!!!!!!!!!!!!!
+import { goFetchTopics, goFetchArticles } from '../actions/actions';
+import { getTopic } from '../lib/helpers';
+import Header from './Header';
+import Footer from './Footer';
 
 class App extends Component {
+  
   componentDidMount () {
-    this.props.goFetchTopics();
+    this.props.fetchTopics();
+    this.props.fetchArticles(getTopic(this.props));
+    // THIS LIFECYCLE FUNC ONLY GETS CALLED ONCE, AFTER THE VERY FIRST RENDER. NEVER AGAIN.
+    // this is where AJAX requests and STATE updates should occur
+    // we are using it to UPDATE THE STATE so we can trigger the OTHER lifecycle methods 
+    // the 'getTopic' call composed inside 'fetchArticles' returns us 'home' when opening up the landing page. 
   }
 
-  // componenetWillReceiveProps (newProps) {
+  componentWillReceiveProps (newProps) {
+    // APP receives new props every time a TOPIC is selected OR an ARTICLE is selected
+    // it's triggered as soon as the props are updated via a state-change in the store, and BEFORE another render
+    // we call the getTopic function inside here (to set our relevant topics or articles). We can't rely on the 'componentDidMount' lifecycle method (above) to do this for us, because it only ever gets called ONCE, right after the first render.
 
-  // }
+    if (newProps.fetchingArticles || this.props.fetchingArticles) return;
+    // if the NEW 'fetchingArticles' prop OR the EXISTING 'fetchingArticles' prop is set to TRUE (ie: there is loading happening), then this function can just stop running here and do nothing.
 
+    const newTopic = getTopic(newProps); // eg. returns 'football'
+    const oldTopic = getTopic(this.props); // e.g. 'home'
+
+    if (newTopic !== oldTopic) {
+      this.props.fetchArticles(newTopic);
+      // if a new topic has come in via params (from react-router), then we call 'fetchArticles', passing it the STRING of the newTopic. This is basically firing off a new API request each time a new topic comes in from react-router.
+      // so the STATE has now been updated, showing a fresh set of topic-specific-only articles, the topic property on it is now set to a topic, and the Provider now goes, 'Hey! There's been a state change! I'm gonna trigger a re-render and pass down all this new state info AS PROPS for all my little children!'. So now, all the props get updated in the relevant components (via mapStateToProps) and so the RENDER function has fresh new data to render. HELLS YEAH.
+    }
+  }
 
   render () {
     return (
-      <div>
-        <Header topics={this.props.topics} />
-
-        <h3 className='title is-3'>All Articles</h3>
-        {this.props.children}
-
-        <Footer />
+      <div id="main">
+          <Header topics={this.props.topics} />
+          {this.props.children}
+          <Footer />
       </div>
     );
   }
@@ -30,23 +47,34 @@ class App extends Component {
 
 function mapDispatchToProps (dispatch) {
   return {
-    goFetchTopics: () => {
-      dispatch(fetchTopics());
+    fetchArticles: (topic) => {
+      dispatch(goFetchArticles(topic));
+    },
+    fetchTopics: () => {
+      dispatch(goFetchTopics());
     }
   };
 }
 
 function mapStateToProps (state) {
+  // this gets called and re-sets its props every time the STATE changes
   return {
-    topics: state.topics.data
+    topics: state.topics.data,
+    topic: state.articles.topic,
+    fetchingArticles: state.articles.fetching,
+    articles: state.articles.data
   };
 }
 
 App.propTypes = {
   children: React.PropTypes.element.isRequired,
+  fetchArticles: React.PropTypes.func.isRequired,
+  fetchTopics: React.PropTypes.func.isRequired,
   topics: React.PropTypes.array.isRequired,
-  goFetchTopics: React.PropTypes.func.isRequired
-
+  topic: React.PropTypes.string,
+  params: React.PropTypes.object,
+  fetchingArticles: React.PropTypes.bool.isRequired,
+  articles: React.PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
