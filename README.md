@@ -26,7 +26,7 @@ and navigate to the following URL in your browser.
 http://localhost:9090/
 ```
 
-To run tests, please run:
+To run tests, please enter:
 
 ```javascript
 npm test
