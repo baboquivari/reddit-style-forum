@@ -1,11 +1,11 @@
-## Northcoders News
+# Northcoders News
 
-# Instructions
+## Instructions
 
 In the terminal enter:
 
 ```javascript
-git clone https://github.com/baboquivari/northcoders-news
+git clone https://github.com/baboquivari/northcoders-news.git
 ```
 
 cd into the project directory and run
@@ -14,17 +14,23 @@ cd into the project directory and run
 npm install
 ```
 
-then...
+then
 
 ```javascript
 npm run dev
 ```
 
-... and finally, navigate to the following URL in your browser
+and navigate to the following URL in your browser.
 
 ```javscript
 http://localhost:9090/
 ```
 
-Thanks
+To run tests, please run:
+
+```javascript
+npm test
+```
+
+Thanks for viewing!
 
