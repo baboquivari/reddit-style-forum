@@ -29,8 +29,12 @@ const Comment = (props) => {
           </nav>
         </div>
         <div>
-          <button className="delete"
-            onClick={deleteHandler.bind(null, props)} />
+           <a className="button is-danger is-outlined">
+          <span>remove</span>
+    <span className="icon is-small">
+      <i className="fa fa-times"></i>
+    </span>
+            </a>
         </div>
       </article>
     </div>

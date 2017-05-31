@@ -10,11 +10,11 @@ const CommentForm = (props) => {
       </figure>
       <form className="media-content"
         onSubmit={props.submitHandler}>
-        <textarea className="textarea" placeholder="Join the conversation..."
+        <textarea className="textarea" placeholder="join the conversation..."
           value={props.input}
           onChange={props.inputHandler} />
         <button className="button is-success is-pulled-right"
-          type="submit" value="post">Post comment
+          type="submit" value="post">submit comment
         </button>
       </form>
     </article>

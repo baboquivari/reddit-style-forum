@@ -5,7 +5,7 @@ import VoteButtons from './VoteArticleButtons';
 
 const ArticleCard = (props) => {
   return (
-    <li className="box article-hover">
+    <li className="box">
       <article className="columns">
         <VoteButtons votes={props.votes}
           voteHandler={props.voteHandler.bind(null, props._id)} />
@@ -15,7 +15,7 @@ const ArticleCard = (props) => {
           <NavLink to={`/articles/${props._id}`}>
             <div className="content">
               <h3 className="title is-3">{props.title}</h3>
-              <div>by {props.created_by}</div>
+              <div id="author">by {props.created_by}</div>
             </div>
           </NavLink>
         </div>

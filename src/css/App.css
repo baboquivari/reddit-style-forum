@@ -10,6 +10,10 @@ a {color: #8ceceb;}
   border-radius: 35px;
 }
 
+#author {
+  font-style: italic;
+}
+
 .front-page-header {
   background-image: linear-gradient(-2deg, #FFFFFF 15%, #e0f9f6 50%, #FFFFFF 75%);  
 }
@@ -26,7 +30,7 @@ a {color: #8ceceb;}
 .footer-custom {
   text-align: center;
   font-weight: 700;
-  background-image: linear-gradient(0deg, #FFFFFF 0%, #e0f9f6 50%, #FFFFFF 100%);  
+  background-image: linear-gradient(-1deg, #FFFFFF 15%, #e0f9f6 50%, #FFFFFF 75%);  
   color: black;
   width: 100%;
   padding: 1.5em;
