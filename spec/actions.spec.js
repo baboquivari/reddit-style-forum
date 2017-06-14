@@ -92,7 +92,8 @@ describe('actions', () => {
       const action = actions.voteArticleSuccess({});
       expect(action).to.eql({
         type: types.VOTE_ARTICLE_SUCCESS,
-        data: {}
+        article_id: {},
+        vote: undefined
       });
     });
 
