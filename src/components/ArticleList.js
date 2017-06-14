@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { voteArticle } from '../actions/actions';
 import { articlesByVote } from '../lib/helpers';
@@ -6,6 +7,8 @@ import ArticleCard from './ArticleCard';
 import Spinner from './Spinner';
 
 class ArticleList extends Component {
+
+  //TODO: Get all the articles showing on home page. Topics and Articles fetching is WORKING.
 
   render () {
     if (!this.doneLoading()) return (<Spinner />);
@@ -60,8 +63,8 @@ function mapDispatchToProps (dispatch) {
 }
 
 ArticleList.propTypes = {
-  articles: React.PropTypes.array.isRequired,
-  voteHandler: React.PropTypes.func.isRequired
+  articles: PropTypes.array.isRequired,
+  voteHandler: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);

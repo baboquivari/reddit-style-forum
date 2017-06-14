@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NavLink from './NavLink';
 import NavBar from './NavBar';
 
@@ -22,7 +23,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  topics: React.PropTypes.array.isRequired
+  topics: PropTypes.array.isRequired
 };
 
 export default Header;

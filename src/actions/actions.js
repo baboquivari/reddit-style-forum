@@ -114,7 +114,7 @@ export function voteArticle (article_id, vote) {
     axios
       .put(`${ROOT}/articles/${article_id}?vote=${vote}`)
       .then(res => {
-        dispatch(voteArticleSuccess(res.data));
+        dispatch(voteArticleSuccess(article_id, vote));
         // returns the same article object, just with the votes property modified
       })
       .catch(error => {
@@ -127,10 +127,11 @@ export function voteArticleRequest () {
     type: types.VOTE_ARTICLE_REQUEST
   };
 }
-export function voteArticleSuccess (article) {
+export function voteArticleSuccess (article_id, vote) {
   return {
     type: types.VOTE_ARTICLE_SUCCESS,
-    data: article
+    article_id: article_id,
+    vote: vote
   };
 }
 export function voteArticleError (error) {

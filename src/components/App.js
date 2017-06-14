@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { goFetchTopics, goFetchArticles } from '../actions/actions';
 import { getTopic } from '../lib/helpers';
@@ -67,14 +68,14 @@ function mapStateToProps (state) {
 }
 
 App.propTypes = {
-  children: React.PropTypes.element.isRequired,
-  fetchArticles: React.PropTypes.func.isRequired,
-  fetchTopics: React.PropTypes.func.isRequired,
-  topics: React.PropTypes.array.isRequired,
-  topic: React.PropTypes.string,
-  params: React.PropTypes.object,
-  fetchingArticles: React.PropTypes.bool.isRequired,
-  articles: React.PropTypes.object.isRequired
+  children: PropTypes.element.isRequired,
+  fetchArticles: PropTypes.func.isRequired,
+  fetchTopics: PropTypes.func.isRequired,
+  topics: PropTypes.array.isRequired,
+  topic: PropTypes.string,
+  params: PropTypes.object,
+  fetchingArticles: PropTypes.bool.isRequired,
+  articles: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

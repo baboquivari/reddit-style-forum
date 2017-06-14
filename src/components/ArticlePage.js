@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchComments, voteComment, addComment, deleteComment, voteArticle, fetchUsers } from '../actions/actions';
 import Spinner from './Spinner';
@@ -55,6 +56,7 @@ class ArticlePage extends Component {
         key={article_id}
         _id={article_id}
         votes={article.votes}
+        articleVote={this.props.articleVote}
         voteHandler={this.props.voteArticle}
         title={article.title}
         body={article.body}
@@ -147,21 +149,22 @@ function mapStateToProps (state) {
   return {
     articles: state.articles.data,
     comments: sortByDate(state.comments.data),
-    users: state.users.data
+    users: state.users.data,
+    articleVote: state.articles.vote
   };
 }
 
 ArticlePage.propTypes = {
-  fetchComments: React.PropTypes.func.isRequired,
-  fetchUsers: React.PropTypes.func.isRequired,
-  params: React.PropTypes.object.isRequired,
-  articles: React.PropTypes.object.isRequired,
-  comments: React.PropTypes.array.isRequired,
-  users: React.PropTypes.object.isRequired,
-  voteComment: React.PropTypes.func.isRequired,
-  voteArticle: React.PropTypes.func.isRequired,
-  addComment: React.PropTypes.func.isRequired,
-  deleteComment: React.PropTypes.func.isRequired
+  fetchComments: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
+  params: PropTypes.object.isRequired,
+  articles: PropTypes.object.isRequired,
+  comments: PropTypes.array.isRequired,
+  users: PropTypes.object.isRequired,
+  voteComment: PropTypes.func.isRequired,
+  voteArticle: PropTypes.func.isRequired,
+  addComment: PropTypes.func.isRequired,
+  deleteComment: PropTypes.func.isRequired  
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticlePage);

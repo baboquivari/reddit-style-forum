@@ -1,6 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const VoteButtons = (props) => {
+  // i can now bring in ARTICLEVOTE from the STATE (articlesReducer), which contains 'up' or 'down' - can I use that to force 'props.votes' to update?
+
+  // if (props.articleVote === 'up') props.votes++;
+
   return (
     <span className="column is-narrow rows">
       <a className="is-success is-small"
@@ -17,8 +22,8 @@ const VoteButtons = (props) => {
 };
 
 VoteButtons.propTypes = {
-  votes: React.PropTypes.number.isRequired,
-  voteHandler: React.PropTypes.func.isRequired
+  votes: PropTypes.number.isRequired,
+  voteHandler: PropTypes.func.isRequired
 };
 
 export default VoteButtons;

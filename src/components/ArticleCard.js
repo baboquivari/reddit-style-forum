@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NavLink from './NavLink';
 // we're re-using code here from Navlink comp to make each ArticleCard a link which when clicked re-routes the app (in index.js via REACT ROUTER) to show the ArticlePage view/component.
 import VoteButtons from './VoteArticleButtons';
@@ -25,11 +26,11 @@ const ArticleCard = (props) => {
 };
 
 ArticleCard.propTypes = {
-  _id: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-  created_by: React.PropTypes.string.isRequired,
-  votes: React.PropTypes.number.isRequired,
-  voteHandler: React.PropTypes.func.isRequired
+  _id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  created_by: PropTypes.string.isRequired,
+  votes: PropTypes.number.isRequired,
+  voteHandler: PropTypes.func.isRequired
 };
 
 export default ArticleCard;

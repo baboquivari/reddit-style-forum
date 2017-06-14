@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import VoteButtons from './VoteArticleButtons';
 
 const Article = (props) => {
@@ -6,6 +7,7 @@ const Article = (props) => {
     <article className="columns">
       <VoteButtons votes={props.votes}
         voteHandler={props.voteHandler.bind(null, props._id)}
+        articleVote={props.articleVote}
       />
       <div className="column">
         <h2 className="title is-3">{props.title}</h2>
@@ -17,12 +19,11 @@ const Article = (props) => {
 };
 
 Article.propTypes = {
-  _id: React.PropTypes.string.isRequired,
-  votes: React.PropTypes.number.isRequired,
-  voteHandler: React.PropTypes.func.isRequired,
-  title: React.PropTypes.string.isRequired,
-  body: React.PropTypes.string.isRequired,
-  created_by: React.PropTypes.string.isRequired
-};
+  _id: PropTypes.string.isRequired,
+  votes: PropTypes.number.isRequired,
+  voteHandler: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  created_by: PropTypes.string.isRequired};
 
 export default Article;

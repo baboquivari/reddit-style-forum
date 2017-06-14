@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CommentForm = (props) => {
   return (
@@ -13,7 +14,7 @@ const CommentForm = (props) => {
         <textarea className="textarea" placeholder="join the conversation..."
           value={props.input}
           onChange={props.inputHandler} />
-        <button className="button is-success is-pulled-right"
+        <button id="formButton" className="button is-success is-pulled-right"
           type="submit" value="post">submit comment
         </button>
       </form>
@@ -22,10 +23,10 @@ const CommentForm = (props) => {
 };
 
 CommentForm.propTypes = {
-  submitHandler: React.PropTypes.func.isRequired,
-  inputHandler: React.PropTypes.func.isRequired,
-  input: React.PropTypes.string.isRequired,
-  avatar_url: React.PropTypes.string.isRequired
+  submitHandler: PropTypes.func.isRequired,
+  inputHandler: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
+  avatar_url: PropTypes.string.isRequired
 };
 
 export default CommentForm;

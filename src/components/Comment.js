@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {getTime} from '../lib/helpers';
 
 const Comment = (props) => {
@@ -7,7 +8,7 @@ const Comment = (props) => {
       <article className="media">
         <div className="media-left">
           <figure className="image is-64x64">
-            <img src={props.avatar_url} alt="Image" />
+            <img id="ncAvatar" src={props.avatar_url} alt="Image" />
           </figure>
         </div>
         <div className="media-content">
@@ -29,12 +30,11 @@ const Comment = (props) => {
           </nav>
         </div>
         <div>
-           <a className="button is-danger is-outlined">
-          <span>remove</span>
-    <span className="icon is-small">
-      <i className="fa fa-times"></i>
-    </span>
-            </a>
+          <button id="commentButton" onClick={deleteHandler.bind(null, props)} className="button is-danger">
+            <span className="icon is-small">
+              <i className="fa fa-times"></i>
+            </span>
+          </button>
         </div>
       </article>
     </div>
@@ -53,14 +53,14 @@ const deleteHandler = (props) => {
 };
 
 Comment.propTypes = {
-  _id: React.PropTypes.string.isRequired,
-  votes: React.PropTypes.number.isRequired,
-  body: React.PropTypes.string.isRequired,
-  created_by: React.PropTypes.string.isRequired,
-  created_at: React.PropTypes.number.isRequired,
-  deleteComment: React.PropTypes.func.isRequired,
-  voteComment: React.PropTypes.func.isRequired,
-  avatar_url: React.PropTypes.string
+  _id: PropTypes.string.isRequired,
+  votes: PropTypes.number.isRequired,
+  body: PropTypes.string.isRequired,
+  created_by: PropTypes.string.isRequired,
+  created_at: PropTypes.number.isRequired,
+  deleteComment: PropTypes.func.isRequired,
+  voteComment: PropTypes.func.isRequired,
+  avatar_url: PropTypes.string
 };
 
 export default Comment;

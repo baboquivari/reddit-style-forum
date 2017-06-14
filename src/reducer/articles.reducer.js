@@ -25,17 +25,20 @@ function articlesReducer (prevState = initialState, action) {
       return newState;
     }
     case types.VOTE_ARTICLE_SUCCESS: {
-      let {article} = action.data;
       const newState = Object.assign({}, prevState);
       const newData = Object.assign({}, newState.data);
-      const newArticle = Object.assign({}, newData[article._id]);
 
-      newArticle.votes = article.votes;
-      newData[article._id] = newArticle;
+      let article = newData[action.article_id];
+
+      if (action.vote === 'up') {
+        article.votes++;
+      } else if (action.vote === 'down') {
+        article.votes--;
+      }
+
       newState.data = newData;
       newState.fetching = false;
       return newState;
-      // this one's a bit strange. i can't get anything to console.log here, but if you refresh the page after up or downvoting, it renders the correctly updated article count.
     }
     case types.VOTE_ARTICLE_ERROR:
     case types.FETCH_ARTICLES_ERROR: {
