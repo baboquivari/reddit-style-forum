@@ -39,6 +39,5 @@ const convertToObject = (users) => {
     return res;
   }, {});
 };
-// creates an object where the keys are the username and the values are the entire user object
 
 export default usersReducer;

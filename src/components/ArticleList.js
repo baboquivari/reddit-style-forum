@@ -8,11 +8,8 @@ import Spinner from './Spinner';
 
 class ArticleList extends Component {
 
-  //TODO: Get all the articles showing on home page. Topics and Articles fetching is WORKING.
-
   render () {
     if (!this.doneLoading()) return (<Spinner />);
-    // if no articles have been loaded onto the state just yet, return this Spinner component
 
     return (
       <main className="section">
@@ -23,7 +20,7 @@ class ArticleList extends Component {
     );
   }
 
-  createArticles () { // articles here is an array, sorted by vote popularity
+  createArticles () {
     let {articles} = this.props;
 
     return articles.map((article, i) => {
@@ -42,7 +39,6 @@ class ArticleList extends Component {
 
   doneLoading () {
     return this.props.articles.length;
-    // length should be 36 for 'home' topic, and obvs different for other topics.
   }
   
 }
@@ -50,7 +46,7 @@ class ArticleList extends Component {
 
 function mapStateToProps (state) {
   return {
-    articles: articlesByVote(state) // articles here is an array, sorted by vote popularity. it WAS an object back up in this component's parent, APP.js
+    articles: articlesByVote(state)
   };
 }
 

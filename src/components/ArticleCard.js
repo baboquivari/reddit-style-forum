@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NavLink from './NavLink';
-// we're re-using code here from Navlink comp to make each ArticleCard a link which when clicked re-routes the app (in index.js via REACT ROUTER) to show the ArticlePage view/component.
 import VoteButtons from './VoteArticleButtons';
 
 const ArticleCard = (props) => {
@@ -10,7 +9,6 @@ const ArticleCard = (props) => {
       <article className="columns">
         <VoteButtons votes={props.votes}
           voteHandler={props.voteHandler.bind(null, props._id)} />
-          {/* the above callback was passed in from the comp's parent container. it get's passed ANOTHER LEVEL into the VoteButtons component, where it's gets called, getting run up in the original ArticleList origin*/}
 
         <div className="column has-text-centered fullwidth">
           <NavLink to={`/articles/${props._id}`}>

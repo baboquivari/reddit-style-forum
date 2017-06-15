@@ -1,22 +1,19 @@
 const getTopic = (props) => {
   let {params} = props;
-  // we pass getTopic all the state that we have defined via the props in 'App', as one big object
 
   switch (true) {
     case params.hasOwnProperty('topic'):
       return params['topic'];
-      // if params come in, simply return which param has come in e.g: FOOTBALL
     case params.hasOwnProperty('article_id'): {
       let artRequest = params['article_id'];
       let article = props.articles[artRequest];
       let topic;
-      // this case part above is concerned with checking parameters coming in via react-router. Remember, props get passed down from react-router and end up in the PROPS.PARAMS nested object
+      
       if (!article) {
         topic = 'home';
       } else {
         topic = article['belongs_to'];
       }
-      // this part sets the topic to 'all' as default, OR sets it to the relevant topic
 
       return topic;
     }

@@ -16,22 +16,16 @@ class ArticlePage extends Component {
     this.state = {
       input: ''
     };
-    // we have this constructor here to set COMPONENT-LEVEL or LOCAL state. We can then modify this before submitting any kind of API request (like a POST request when a user hits the SUBMIT button on their recently-typed comment). The API request is what's going to change our APPLICATION-LEVEL state (the store) and trigger the eventual re-render we want.
 
     this.inputHandler = this.inputHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
-    // we are binding our handler functions to the context of THIS constructor function.
   }
 
   componentDidMount () {
     this.props.fetchComments(this.props.params.article_id);
-    // we're fetching the relevant comments for the specific article
     this.props.fetchUsers();
-    // we fetch all our current users so we have the data for displaying and creating comments, and also displaying which user created the article we are on. 
   }
-  // again, this componentDidMount lifecycle function only gets called ONCE, just after the first initial render, and then never again.
-  // this is a good place to set initial state of a component.
-  
+    
   render () {
     if (!this.doneLoading()) return (<Spinner />);    
     return (

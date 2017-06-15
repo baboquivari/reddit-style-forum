@@ -10,8 +10,6 @@ export function goFetchArticles (topic) {
     if (topic && topic !== 'home') {
       URL = `${ROOT}/topics/${topic}/articles`;
     }
-    // if we're routing to a new topic, we set our URL for the get request to point us to a different part of the API, a part that returns all the articles JUST for a certain topic. NB: This is where I was going wrong before, I assumed that you just fetch ALL THE ARTICLES at the start, and then filter through those articles to grab the specific ones needed for a topic. WRONG. We're doing a brand new fetch request every time a user selects a new TOPIC in the NavBar.
-    // IN ESSENCE, this action creator function is setup to hit 2 DIFFERENT API ENDPOINTS (all articles or some articles) depending on what's coming in via it's 'topic' argument.
 
     dispatch(fetchArticlesRequest());
     axios
@@ -113,10 +111,8 @@ export function voteArticle (article_id, vote) {
     dispatch(voteArticleRequest());
     axios
       .put(`${ROOT}/articles/${article_id}?vote=${vote}`)
-      .then(res => {
-        dispatch(voteArticleSuccess(article_id, vote));
-        // returns the same article object, just with the votes property modified
-      })
+      .then(
+        dispatch(voteArticleSuccess(article_id, vote)))
       .catch(error => {
         dispatch(voteArticleError(error));
       });
