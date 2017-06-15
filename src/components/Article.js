@@ -12,7 +12,7 @@ const Article = (props) => {
       <div className="column">
         <h2 className="title is-3">{props.title}</h2>
         <span className="bold">by: {props.created_by}</span>
-        <p>{props.body}</p>
+        <p id="artBody">{props.body}</p>
       </div>
     </article>
   );
