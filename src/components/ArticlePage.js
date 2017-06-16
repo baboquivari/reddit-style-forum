@@ -50,7 +50,6 @@ class ArticlePage extends Component {
         key={article_id}
         _id={article_id}
         votes={article.votes}
-        articleVote={this.props.articleVote}
         voteHandler={this.props.voteArticle}
         title={article.title}
         body={article.body}
@@ -158,7 +157,7 @@ ArticlePage.propTypes = {
   voteComment: PropTypes.func.isRequired,
   voteArticle: PropTypes.func.isRequired,
   addComment: PropTypes.func.isRequired,
-  deleteComment: PropTypes.func.isRequired  
+  deleteComment: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticlePage);

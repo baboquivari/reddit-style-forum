@@ -7,7 +7,6 @@ const Article = (props) => {
     <article className="columns">
       <VoteButtons votes={props.votes}
         voteHandler={props.voteHandler.bind(null, props._id)}
-        articleVote={props.articleVote}
       />
       <div className="column">
         <h2 className="title is-3">{props.title}</h2>
