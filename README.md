@@ -1,5 +1,11 @@
 # Northcoders News
 
+NB: Please visit the following URL if you'd like to see a deployed version of this application:
+
+```
+https://nc-news-tony-sian.herokuapp.com
+```
+
 ## Instructions
 
 In the terminal enter:
