@@ -1,6 +1,6 @@
 # Northcoders News
 
-NB: Please visit the following URL if you'd like to see a deployed version of this application:
+Update (28th Dec 2018): The link to the deployed app below doesn't work anymore as Northcoders have recently decommissioned the API that this app hooks into for all it's data :( 
 
 ```
 https://nc-news-tony-sian.herokuapp.com
