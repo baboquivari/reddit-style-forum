@@ -1,6 +1,6 @@
 # Northcoders News
 
-Update (18th Feb 2019): Northcoders have recently decommissioned the API that this app hooks into so I'm currently fixing it. I've built a new API (hosted here: https://northcoders-news-tony-sian-api.herokuapp.com/api) and have currently got the front-page working. Just need to fix the article pages :) 
+Update (18th Feb 2019): Northcoders have recently decommissioned the API that this app hooks into so I'm currently fixing it. I've built a new API (hosted here: https://northcoders-news-tony-sian-api.herokuapp.com/api) and have got the front-page working. Just need to fix the article pages :) 
 
 ```
 https://nc-news-tony-sian.herokuapp.com
