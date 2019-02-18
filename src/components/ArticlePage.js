@@ -22,12 +22,13 @@ class ArticlePage extends Component {
   }
 
   componentDidMount () {
+    console.log(this.state.articles);
     this.props.fetchComments(this.props.params.article_id);
-    this.props.fetchUsers();
+    // this.props.fetchUsers();
   }
-    
+
   render () {
-    if (!this.doneLoading()) return (<Spinner />);    
+    if (!this.doneLoading()) return (<Spinner />);
     return (
       <main className="section">
           <section className="container box">
@@ -38,7 +39,7 @@ class ArticlePage extends Component {
             </ul>
           </section>
       </main>
-    );    
+    );
   }
 
   createArticle () {
